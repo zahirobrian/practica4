@@ -310,3 +310,134 @@ Juego de memoria con gestión de archivos en múltiples formatos.
   "customSettings": {"theme":"guinda","level":"easy"}
 }
 ```
+
+---
+
+## Parte 2: Memory Game IPN — Desarrollo
+
+### Menú Principal
+
+La pantalla de inicio permite seleccionar el nivel de dificultad (Fácil 4×4 o Difícil 6×6), acceder a partidas guardadas y cambiar el tema. Implementa los mismos temas institucionales que la Parte 1.
+
+<p align="center">
+  <img src="MemoryGameIPN/screenshots/menu_guinda.png" width="220"/>
+  &nbsp;&nbsp;&nbsp;
+  <img src="MemoryGameIPN/screenshots/menu_azul.png" width="220"/>
+</p>
+<p align="center"><i>Figura 8. Menú principal — Tema Guinda (IPN) y Tema Azul (ESCOM)</i></p>
+
+---
+
+### Tablero de Juego — Nivel Fácil (4×4)
+
+El tablero muestra 16 cartas boca abajo con el ícono 🎓. Al tocar una carta se anima con una rotación 3D y se revela el emoji del par. La barra superior muestra puntuación, cronómetro y movimientos en tiempo real.
+
+<p align="center">
+  <img src="MemoryGameIPN/screenshots/tablero_guinda.png" width="200"/>
+  &nbsp;&nbsp;
+  <img src="MemoryGameIPN/screenshots/tablero_azul.png" width="200"/>
+  &nbsp;&nbsp;
+  <img src="MemoryGameIPN/screenshots/par_encontrado.png" width="200"/>
+</p>
+<p align="center"><i>Figura 9. Tablero Fácil con carta volteada (Guinda) — Tablero inicial (Azul) — Par de kiwis encontrado con puntuación 100</i></p>
+
+---
+
+### Tablero de Juego — Nivel Difícil (6×6)
+
+El nivel difícil presenta un tablero de 36 cartas con 18 pares de emojis, aumentando significativamente la dificultad y el tiempo de juego.
+
+<p align="center">
+  <img src="MemoryGameIPN/screenshots/tablero_dificil.png" width="220"/>
+</p>
+<p align="center"><i>Figura 10. Tablero Difícil (6×6) con carta de limón volteada</i></p>
+
+---
+
+### Guardado de Partidas
+
+Al tocar "Guardar Partida" se muestra un diálogo donde el jugador ingresa una etiqueta personalizada y selecciona el formato de guardado: TXT, JSON o XML. Los archivos se guardan en el almacenamiento interno de la app.
+
+<p align="center">
+  <img src="MemoryGameIPN/screenshots/dialogo_guardar.png" width="220"/>
+</p>
+<p align="center"><i>Figura 11. Diálogo de guardado con etiqueta "intento2" y formato JSON seleccionado</i></p>
+
+---
+
+### Diálogo de Victoria
+
+Al encontrar todos los pares el juego detiene el cronómetro y muestra el resumen final con puntuación, tiempo y movimientos. El jugador puede guardar la partida, iniciar una nueva o salir.
+
+<p align="center">
+  <img src="MemoryGameIPN/screenshots/dialogo_victoria.png" width="220"/>
+</p>
+<p align="center"><i>Figura 12. Diálogo de victoria — Puntuación: 765, Tiempo: 4:33, Movimientos: 21</i></p>
+
+---
+
+### Visualización del Archivo de Guardado
+
+La app permite ver el contenido crudo del archivo de guardado directamente desde la lista de partidas. Se muestra el JSON completo con todos los campos: etiqueta, nivel, puntuación, tiempo, tablero, historial y configuraciones.
+
+<p align="center">
+  <img src="MemoryGameIPN/screenshots/contenido_json.png" width="220"/>
+</p>
+<p align="center"><i>Figura 13. Contenido del archivo intento2_1778866402557.json con todos los datos de la partida</i></p>
+
+---
+
+## Implementación — Memory Game IPN
+
+### Mecánica del juego
+
+```kotlin
+// Al encontrar un par
+matched[firstCard] = true
+matched[index] = true
+pairsFound++
+score += 100
+
+// Al fallar
+score = maxOf(0, score - 5)
+handler.postDelayed({
+    flipCard(firstIndex, faceUp = false)
+    flipCard(index, faceUp = false)
+}, 900)
+```
+
+### Guardado en tres formatos
+
+```kotlin
+fun save(context: Context, state: GameState, format: String): Boolean {
+    val content = when (format) {
+        "TXT"  -> toTxt(state)
+        "JSON" -> toJson(state)
+        "XML"  -> toXml(state)
+        else   -> toJson(state)
+    }
+    file.writeText(content, Charsets.UTF_8)
+}
+```
+
+### Carga con detección automática de formato
+
+```kotlin
+fun load(file: File): GameState? = when (file.extension.lowercase()) {
+    "json" -> fromJson(file.readText())
+    "xml"  -> fromXml(file.readText())
+    "txt"  -> fromTxt(file.readText())
+    else   -> null
+}
+```
+
+### Animación de volteo 3D
+
+```kotlin
+back.animate().rotationY(90f).setDuration(150).withEndAction {
+    back.visibility  = View.GONE
+    front.visibility = View.VISIBLE
+    front.rotationY  = -90f
+    front.animate().rotationY(0f).setDuration(150).start()
+}.start()
+```
