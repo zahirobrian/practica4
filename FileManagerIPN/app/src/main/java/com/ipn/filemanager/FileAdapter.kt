@@ -58,7 +58,7 @@ class FileAdapter(
                 Glide.with(imgThumbnail.context)
                     .load(file)
                     .centerCrop()
-                    .diskCacheStrategy(DiskCacheStrategy.THUMBNAIL)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .thumbnail(0.1f)
                     .placeholder(android.R.drawable.ic_menu_gallery)
                     .error(android.R.drawable.ic_menu_gallery)
