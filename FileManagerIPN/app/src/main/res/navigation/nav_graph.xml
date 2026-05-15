@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fileListFragment">
+
+    <fragment
+        android:id="@+id/fileListFragment"
+        android:name="com.ipn.filemanager.FileListFragment"
+        android:label="@string/files" />
+
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.ipn.filemanager.FavoritesFragment"
+        android:label="@string/favorites" />
+
+    <fragment
+        android:id="@+id/recentsFragment"
+        android:name="com.ipn.filemanager.RecentsFragment"
+        android:label="@string/recents" />
+
+</navigation>

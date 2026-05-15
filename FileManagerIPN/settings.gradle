@@ -1,0 +1,2 @@
+rootProject.name = "FileManagerIPN"
+include ':app'

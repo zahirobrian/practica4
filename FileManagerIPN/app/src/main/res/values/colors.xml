@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="guinda_primary">#731D3F</color>
+    <color name="guinda_dark">#4A0F28</color>
+    <color name="guinda_accent">#C0395A</color>
+    <color name="azul_primary">#003B8E</color>
+    <color name="azul_dark">#002566</color>
+    <color name="azul_accent">#1565C0</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="syntax_key">#FF6B6B</color>
+    <color name="syntax_string">#A8E6CF</color>
+    <color name="syntax_number">#FFD93D</color>
+    <color name="syntax_tag">#FF6B6B</color>
+    <color name="syntax_attr">#FFD93D</color>
+    <color name="syntax_value">#A8E6CF</color>
+</resources>
