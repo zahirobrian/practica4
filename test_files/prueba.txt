@@ -1,0 +1,29 @@
+═══════════════════════════════════════
+   File Manager IPN - Archivo de Prueba
+   Instituto Politécnico Nacional
+   Escuela Superior de Cómputo
+═══════════════════════════════════════
+
+Este es un archivo de texto de prueba para demostrar
+el visualizador de texto del File Manager IPN.
+
+Características del visualizador:
+- Soporte para archivos .txt y .md
+- Fuente monospace para mejor legibilidad
+- Scroll vertical para archivos largos
+- Muestra metadatos: tamaño, fecha y tipo MIME
+
+Alumno: zahirobrian
+Materia: Desarrollo de aplicaciones móviles nativas
+Práctica: 4 - Manejo de archivos en Android
+Fecha: Mayo 2026
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+
+Línea 1: El manejo de archivos en Android usa Scoped Storage.
+Línea 2: Room Database permite persistir favoritos localmente.
+Línea 3: Glide cachea miniaturas de imágenes eficientemente.
+Línea 4: SharedPreferences guarda el historial de recientes.
+Línea 5: Navigation Component gestiona la navegación entre fragments.

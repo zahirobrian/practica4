@@ -1,0 +1,39 @@
+{
+  "app": "File Manager IPN",
+  "version": "1.0",
+  "institucion": {
+    "nombre": "Instituto Politécnico Nacional",
+    "escuela": "Escuela Superior de Cómputo",
+    "carrera": "Ingeniería en Sistemas Computacionales"
+  },
+  "practica": {
+    "numero": 4,
+    "titulo": "Manejo de archivos en Android",
+    "fecha_entrega": "2026-05-15",
+    "completada": true
+  },
+  "tecnologias": [
+    "Kotlin",
+    "Room Database",
+    "Glide",
+    "PhotoView",
+    "Navigation Component",
+    "Material Design 3"
+  ],
+  "funcionalidades": {
+    "explorador": true,
+    "visualizador_texto": true,
+    "visualizador_imagenes": true,
+    "resaltado_json": true,
+    "resaltado_xml": true,
+    "favoritos": true,
+    "recientes": true,
+    "temas": ["Guinda", "Azul"],
+    "modos": ["Claro", "Oscuro"]
+  },
+  "estadisticas": {
+    "archivos_kotlin": 10,
+    "archivos_xml": 15,
+    "lineas_codigo": 2116
+  }
+}

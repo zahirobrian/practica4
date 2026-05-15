@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<practica numero="4" materia="Desarrollo de aplicaciones móviles nativas">
+
+    <institucion>
+        <nombre>Instituto Politécnico Nacional</nombre>
+        <escuela>Escuela Superior de Cómputo</escuela>
+        <carrera>Ingeniería en Sistemas Computacionales</carrera>
+        <plan>2020</plan>
+    </institucion>
+
+    <aplicacion nombre="FileManagerIPN" version="1.0">
+        <descripcion>
+            Explorador y gestor de archivos completo para Android
+            con soporte de temas institucionales IPN y ESCOM.
+        </descripcion>
+
+        <funcionalidades>
+            <item id="1">Exploración de almacenamiento interno y externo</item>
+            <item id="2">Navegación con breadcrumb interactivo</item>
+            <item id="3">Visualizador de texto con soporte .txt y .md</item>
+            <item id="4">Visualizador JSON con resaltado de sintaxis</item>
+            <item id="5">Visualizador XML con resaltado de sintaxis</item>
+            <item id="6">Visualizador de imágenes con zoom y rotación</item>
+            <item id="7">Sistema de favoritos con Room Database</item>
+            <item id="8">Historial de recientes con SharedPreferences</item>
+            <item id="9">Operaciones: copiar, mover, renombrar, eliminar</item>
+            <item id="10">Temas Guinda (IPN) y Azul (ESCOM)</item>
+        </funcionalidades>
+
+        <temas>
+            <tema nombre="Guinda" color_primario="#731D3F" institucion="IPN"/>
+            <tema nombre="Azul" color_primario="#003B8E" institucion="ESCOM"/>
+        </temas>
+
+        <arquitectura patron="MVVM">
+            <capa nombre="View">Activities, Fragments, Adapter</capa>
+            <capa nombre="ViewModel">FileViewModel con LiveData</capa>
+            <capa nombre="Model">Room, FileUtils, ThemeManager</capa>
+        </arquitectura>
+    </aplicacion>
+
+    <entrega>
+        <fecha>2026-05-15</fecha>
+        <repositorio>https://github.com/zahirobrian/practica4</repositorio>
+    </entrega>
+
+</practica>
