@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Carpeta blanca centrada -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M44,30 L28,30 C24.7,30 22,32.7 22,36 L22,72 C22,75.3 24.7,78 28,78 L80,78 C83.3,78 86,75.3 86,72 L86,42 C86,38.7 83.3,36 80,36 L54,36 L50,30 Z" />
+</vector>
