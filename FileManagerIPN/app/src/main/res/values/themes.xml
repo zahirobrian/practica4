@@ -16,8 +16,6 @@
         <item name="colorOnSecondary">#FFFFFF</item>
         <item name="colorSurface">#FFFFFF</item>
         <item name="colorOnSurface">#1C1B1F</item>
-        <item name="colorBackground">#FAFAFA</item>
-        <item name="colorOnBackground">#1C1B1F</item>
         <item name="colorError">#B00020</item>
         <item name="android:colorBackground">#FAFAFA</item>
         <item name="android:statusBarColor">#4A0F28</item>
@@ -34,8 +32,6 @@
         <item name="colorOnSecondary">#FFFFFF</item>
         <item name="colorSurface">#FFFFFF</item>
         <item name="colorOnSurface">#1C1B1F</item>
-        <item name="colorBackground">#FAFAFA</item>
-        <item name="colorOnBackground">#1C1B1F</item>
         <item name="colorError">#B00020</item>
         <item name="android:colorBackground">#FAFAFA</item>
         <item name="android:statusBarColor">#002566</item>
