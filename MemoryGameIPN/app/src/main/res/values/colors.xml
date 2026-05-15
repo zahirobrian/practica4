@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="guinda">#731D3F</color>
+    <color name="guinda_dark">#4A0F28</color>
+    <color name="azul">#003B8E</color>
+    <color name="azul_dark">#002566</color>
+    <color name="white">#FFFFFF</color>
+    <color name="card_back">#731D3F</color>
+    <color name="card_front">#FFFFFF</color>
+    <color name="card_matched">#4CAF50</color>
+</resources>

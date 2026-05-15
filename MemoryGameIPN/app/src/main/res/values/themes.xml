@@ -1,0 +1,34 @@
+<resources>
+    <style name="Theme.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- TEMA GUINDA (IPN) -->
+    <style name="Theme.Guinda" parent="Theme.Base">
+        <item name="colorPrimary">#731D3F</item>
+        <item name="colorPrimaryVariant">#4A0F28</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#C0395A</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="colorOnSurface">#1C1B1F</item>
+        <item name="android:colorBackground">#FAFAFA</item>
+        <item name="android:statusBarColor">#4A0F28</item>
+        <item name="android:navigationBarColor">#731D3F</item>
+    </style>
+
+    <!-- TEMA AZUL (ESCOM) -->
+    <style name="Theme.Azul" parent="Theme.Base">
+        <item name="colorPrimary">#003B8E</item>
+        <item name="colorPrimaryVariant">#002566</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#1565C0</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="colorOnSurface">#1C1B1F</item>
+        <item name="android:colorBackground">#FAFAFA</item>
+        <item name="android:statusBarColor">#002566</item>
+        <item name="android:navigationBarColor">#003B8E</item>
+    </style>
+</resources>

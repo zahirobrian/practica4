@@ -250,3 +250,63 @@ El desarrollo de esta práctica permitió profundizar en el manejo avanzado de a
 - Bumptech. (2024). *Glide v4 documentation*. https://bumptech.github.io/glide/
 - Chrisbanes. (2020). *PhotoView*. https://github.com/chrisbanes/PhotoView
 - JetBrains. (2024). *Kotlin coroutines guide*. https://kotlinlang.org/docs/coroutines-guide.html
+
+---
+
+## Parte 2: Memory Game IPN
+
+Juego de memoria con gestión de archivos en múltiples formatos.
+
+### Instalación
+
+1. Abre Android Studio → **Open** → selecciona `MemoryGameIPN/`
+2. Espera el Gradle Sync
+3. **Run 'app'**
+
+### Características del Juego
+
+- **2 niveles:** Fácil (4×4 = 8 pares) y Difícil (6×6 = 18 pares)
+- **Puntuación:** +100 por par encontrado, -5 por intento fallido
+- **Cronómetro** en tiempo real
+- **Animación de volteo** de cartas con rotación 3D
+- **Efectos de sonido** usando ToneGenerator (sin archivos externos)
+- **Temas:** Guinda (IPN) y Azul (ESCOM), modo claro/oscuro automático
+
+### Gestión de Archivos
+
+- **Guardar** en TXT, JSON o XML con etiqueta personalizada
+- **Cargar** desde cualquier formato (detección automática por extensión)
+- **Ver contenido** crudo del archivo de guardado
+- **Eliminar** partidas guardadas
+- **Lista de partidas** con metadatos: nivel, tiempo, puntuación, fecha
+
+### Información guardada por partida
+
+| Campo | Descripción |
+|---|---|
+| `tag` | Etiqueta asignada por el jugador |
+| `level` | Nivel (0=Fácil, 1=Difícil) |
+| `board` | Emojis del tablero en orden |
+| `flipped` / `matched` | Estado de cada carta |
+| `score` | Puntuación al guardar |
+| `moves` | Número de movimientos |
+| `timeElapsed` | Segundos transcurridos |
+| `moveHistory` | Historial de cada movimiento |
+| `customSettings` | Tema, nivel, formato, tamaño del grid |
+
+### Ejemplo de archivo guardado (JSON)
+
+```json
+{
+  "tag": "intento1",
+  "level": 0,
+  "score": 350,
+  "moves": 12,
+  "timeElapsed": 45,
+  "board": ["🍎","🐶","🍊","🍎","🐶","🍊"],
+  "flipped": [false,false,false,false,false,false],
+  "matched": [true,true,true,true,true,true],
+  "moveHistory": ["Par encontrado: 🍎", "Par encontrado: 🐶"],
+  "customSettings": {"theme":"guinda","level":"easy"}
+}
+```
