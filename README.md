@@ -1,4 +1,4 @@
-# Práctica 4 — Manejo de Archivos en Android
+# Práctica 4 — Manejo de Archivos en Android.
 
 | Campo | Datos |
 |---|---|
