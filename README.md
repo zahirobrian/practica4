@@ -441,3 +441,255 @@ back.animate().rotationY(90f).setDuration(150).withEndAction {
     front.animate().rotationY(0f).setDuration(150).start()
 }.start()
 ```
+
+---
+
+# Práctica 6 — Manejo de Sensores del Dispositivo Móvil
+
+| Campo | Datos |
+|---|---|
+| **Integrantes** | Bernal Ramírez Brian Ricardo / Saavedra Mata Karla Sofía |
+| **Boletas** | 2023630387 / 2019300048 |
+| **Asignatura** | Desarrollo de Aplicaciones Móviles Nativas |
+| **Profesor** | Gabriel Hurtado Avilés |
+| **Fecha de entrega** | 28 de mayo de 2026 |
+| **Institución** | Instituto Politécnico Nacional — Escuela Superior de Cómputo |
+
+---
+
+## Introducción
+
+La Práctica 6 extiende el Gestor de Archivos (Práctica 4) con sensores del dispositivo y comunicación Bluetooth, y desarrolla una nueva aplicación de navegación web vía Bluetooth. El objetivo es aprovechar el hardware del dispositivo móvil para crear soluciones de interconexión entre dispositivos.
+
+---
+
+## Ejercicio 1 — Implementación de Sensores en FileManagerIPN
+
+### Sensores implementados
+
+**1. Acelerómetro (`TYPE_ACCELEROMETER`)**
+- Muestra los valores X, Y, Z en tiempo real (m/s²)
+- Detecta el gesto de "shake" para refrescar la lista de archivos
+- Algoritmo: calcula la velocidad de cambio entre lecturas; si supera el umbral de 800, se activa
+
+```kotlin
+val dx = x - lastX; val dy = y - lastY; val dz = z - lastZ
+val speed = sqrt(dx*dx + dy*dy + dz*dz) / timeDelta
+if (speed > SHAKE_THRESHOLD) onShakeDetected()
+```
+
+**2. Sensor de Luz Ambiental (`TYPE_LIGHT`)**
+- Muestra el nivel de luz en lux en tiempo real
+- Clasifica automáticamente: Oscuridad / Luz baja / Luz normal / Luz intensa / Luz solar
+
+**3. Autenticación Biométrica (Huella Dactilar)**
+- Usa `BiometricPrompt` de AndroidX para acceder a carpetas protegidas
+- Maneja los tres estados: éxito, fallo y error
+
+### Gestión eficiente de batería
+
+```kotlin
+override fun onResume() {
+    // Solo activa sensores cuando la pantalla es visible
+    if (accelEnabled) sensorManager.registerListener(this, accelerometer, SENSOR_DELAY_UI)
+    if (lightEnabled) sensorManager.registerListener(this, lightSensor, SENSOR_DELAY_UI)
+}
+override fun onPause() {
+    // Desregistra todos para no consumir batería en background
+    sensorManager.unregisterListener(this)
+}
+```
+
+### Cómo probar (Ejercicio 1)
+
+1. Instala `FileManagerIPN` en el dispositivo
+2. Abre la app → toolbar → ícono **Sensores**
+3. Observa los valores del acelerómetro y luz cambiando en tiempo real
+4. Agita el teléfono → aparece el mensaje "Shake detectado"
+5. Desactiva un sensor con el Switch → deja de actualizarse
+6. Toca **🔐 Autenticar con Huella** → usa tu huella dactilar
+
+### Capturas necesarias (Ejercicio 1)
+
+| # | Pantalla |
+|---|---|
+| 1 | Pantalla de sensores con datos en tiempo real (valores X/Y/Z del acelerómetro) |
+| 2 | Mensaje de "Shake detectado" tras agitar el teléfono |
+| 3 | Diálogo de autenticación biométrica (huella dactilar) |
+| 4 | Resultado: "✅ Autenticación exitosa" |
+
+---
+
+## Ejercicio 2 — Compartir Archivos vía Bluetooth en FileManagerIPN
+
+### Funcionalidades implementadas
+
+- Descubrimiento de dispositivos Bluetooth cercanos via `BroadcastReceiver`
+- Conexión segura RFCOMM (`createRfcommSocketToServiceRecord`)
+- Envío y recepción de archivos de cualquier formato
+- Progreso de transferencia en tiempo real (chunks de 4KB)
+- Historial de transferencias (enviadas y recibidas)
+- Cancelación de transferencias en curso
+- Verificación de integridad por tamaño de archivo
+- Servicio foreground `BluetoothTransferService` con notificación persistente
+
+### Arquitectura de transferencia
+
+```
+Teléfono A (Receptor)          Teléfono B (Emisor)
+─────────────────────          ──────────────────
+AcceptThread                   ConnectThread
+  listenUsingRfcomm()   ←→       createRfcomm()
+  accept()              ←─────── connect()
+                                  
+ConnectedThread (servidor)     ConnectedThread (cliente)
+  receiveFile()          ←      sendFile()
+  [Header: nombre|size]  ←      outStream.write(header)
+  [Chunks de 4KB]        ←      outStream.write(chunk)
+  Verifica integridad           
+```
+
+### Permisos gestionados
+
+```xml
+<uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+<uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+<!-- Android 12+ requiere permisos en tiempo de ejecución -->
+```
+
+### Cómo probar (Ejercicio 2)
+
+1. Instala `FileManagerIPN` en **ambos teléfonos**
+2. **Teléfono A** (receptor): toolbar → **Bluetooth** → toca **📥 Recibir**
+3. **Teléfono B** (emisor): toolbar → **Bluetooth** → **🔍 Buscar Dispositivos**
+4. Selecciona el Teléfono A de la lista → toca **Seleccionar Archivo** → elige un archivo
+5. Toca **📤 Enviar** → observa la barra de progreso en ambos dispositivos
+6. El archivo se guarda en `Downloads/` del Teléfono A
+
+### Capturas necesarias (Ejercicio 2)
+
+| # | Pantalla |
+|---|---|
+| 1 | Teléfono B buscando dispositivos (lista de dispositivos encontrados) |
+| 2 | Progreso de transferencia en tiempo real (~50%) en ambos teléfonos |
+| 3 | Historial de transferencias mostrando archivo enviado/recibido |
+| 4 | Notificación del servicio Bluetooth en la barra de notificaciones |
+
+---
+
+## Ejercicio 3 — Navegador Bluetooth (BluetoothBrowser)
+
+**Repositorio:** mismo repo, carpeta `BluetoothBrowser/`
+
+> ⚠️ Esta app está desarrollada **exclusivamente con Android Nativo + XML layouts**. No usa Jetpack Compose ni frameworks de terceros, según las instrucciones de la práctica.
+
+### Descripción
+
+Permite que un dispositivo sin Internet (Dispositivo B) navegue por la web a través de un dispositivo con Internet (Dispositivo A), usando Bluetooth como canal de comunicación.
+
+### Arquitectura Cliente-Servidor
+
+```
+Dispositivo A (Servidor — tiene Internet)
+├── ServerActivity.kt       → Acepta conexiones BT, ejecuta peticiones HTTP
+├── ProxyService.kt         → Foreground service con notificación
+└── Caché LRU en memoria    → Evita descargar la misma URL dos veces
+
+Dispositivo B (Cliente — sin Internet)
+├── BrowserActivity.kt      → UI de navegador: barra de URL, historial, favoritos
+└── ReaderThread            → Recibe respuestas del servidor en chunks
+
+Compartido
+└── BtProtocol.kt           → Protocolo de mensajes REQUEST/RESPONSE/PING/PONG
+```
+
+### Protocolo Bluetooth
+
+```
+Cliente → Servidor:   REQUEST:https://ejemplo.com
+Servidor → Cliente:   RESPONSE_START:12345
+Servidor → Cliente:   RESPONSE_CHUNK:...datos...
+Servidor → Cliente:   RESPONSE_CHUNK:...datos...
+Servidor → Cliente:   RESPONSE_END
+```
+
+### Funcionalidades del navegador (Dispositivo B)
+
+- Barra de direcciones con normalización de URLs
+- Botones de navegación: ⬅ Atrás / ➡ Adelante / 🔄 Refrescar
+- Búsqueda en Google cuando se ingresa texto sin URL
+- Historial local de navegación
+- Favoritos persistidos en SharedPreferences
+- Reconexión automática si se pierde la conexión
+- Modo incógnito (no guarda historial)
+
+### Temas personalizables
+
+| Botón | Efecto |
+|---|---|
+| **Guinda** | Color representativo del IPN (`#731D3F`) |
+| **Azul** | Color representativo de ESCOM (`#003B8E`) |
+| **Oscuro** | Alterna modo oscuro manualmente (independiente del sistema) |
+
+El modo oscuro automático usa `res/values-night/themes.xml` del sistema Android.
+
+### Cómo probar (Ejercicio 3)
+
+1. Instala `BluetoothBrowser` en **ambos teléfonos**
+2. Vincula los teléfonos via Bluetooth (Ajustes del sistema → Bluetooth → Vincular)
+3. **Teléfono A** (con WiFi/datos activos):
+   - Abre la app → **Dispositivo A — SERVIDOR**
+   - Toca **▶ Iniciar Servidor**
+   - Espera el mensaje "Servidor iniciado — esperando conexión BT"
+4. **Teléfono B** (apaga WiFi y datos celulares — visible en barra de notificaciones):
+   - Abre la app → **Dispositivo B — CLIENTE**
+   - Toca **Conectar** → selecciona el Teléfono A de la lista
+   - Espera el indicador "● Conectado" en verde
+5. Escribe `google.com` en la barra de URL → toca **IR**
+6. El contenido de la página llega via Bluetooth y se renderiza como texto
+
+### Capturas necesarias (Ejercicio 3)
+
+| # | Pantalla | Dispositivo |
+|---|---|---|
+| 1 | Pantalla de selección de rol (Servidor / Cliente) | Cualquiera |
+| 2 | Servidor activo con log de peticiones | Teléfono A |
+| 3 | Cliente con indicador "● Conectado" en verde | Teléfono B |
+| 4 | Teléfono B con WiFi y datos **desactivados** (barra superior) | Teléfono B |
+| 5 | Contenido de una página web renderizado via Bluetooth | Teléfono B |
+| 6 | Pantalla de selección de temas (Guinda/Azul/Oscuro) | Cualquiera |
+
+---
+
+## Dependencias añadidas (Práctica 6)
+
+| Librería | Versión | Uso |
+|---|---|---|
+| `androidx.biometric:biometric` | 1.1.0 | Autenticación biométrica (huella) |
+| Android Bluetooth API | nativa | RFCOMM, descubrimiento, transferencia |
+| `SensorManager` | nativa | Acelerómetro y luz ambiental |
+| `NotificationCompat` | nativa | Notificaciones de transferencia |
+
+---
+
+## Permisos requeridos
+
+| Permiso | Ejercicio | Motivo |
+|---|---|---|
+| `USE_BIOMETRIC` | 1 | Autenticación con huella |
+| `BLUETOOTH_CONNECT` | 2 y 3 | Conectar dispositivos (Android 12+) |
+| `BLUETOOTH_SCAN` | 2 y 3 | Descubrir dispositivos (Android 12+) |
+| `ACCESS_FINE_LOCATION` | 2 y 3 | Requerido para BT en Android < 12 |
+| `FOREGROUND_SERVICE` | 2 y 3 | Servicio de transferencia en background |
+| `INTERNET` | 3 | El servidor descarga páginas web |
+
+---
+
+## Bibliografía
+
+- Android Developers. (2024). *SensorManager*. https://developer.android.com/reference/android/hardware/SensorManager
+- Android Developers. (2024). *BiometricPrompt*. https://developer.android.com/reference/androidx/biometric/BiometricPrompt
+- Android Developers. (2024). *Bluetooth overview*. https://developer.android.com/guide/topics/connectivity/bluetooth
+- Android Developers. (2024). *BluetoothServerSocket*. https://developer.android.com/reference/android/bluetooth/BluetoothServerSocket
+- Android Developers. (2024). *Manage battery usage*. https://developer.android.com/training/monitoring-device-state/battery-monitoring
+- gabrielhuav. (2024). *BattleNaval_V2*. https://github.com/gabrielhuav/BattleNaval_V2
