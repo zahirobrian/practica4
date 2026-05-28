@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="16dp">
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="📡 Dispositivo A — SERVIDOR" android:textSize="18sp"
+        android:textStyle="bold" android:layout_marginBottom="12dp"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="12dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Estado Bluetooth" android:textStyle="bold"/>
+            <TextView android:id="@+id/tvBtStatus" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="● Desconectado"
+                android:textColor="#F44336" android:layout_marginTop="4dp"/>
+            <TextView android:id="@+id/tvClientInfo" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Esperando cliente..."
+                android:textSize="12sp" android:layout_marginTop="4dp"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="12dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Internet" android:textStyle="bold"/>
+            <TextView android:id="@+id/tvInternetStatus" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Verificando..."
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnStartServer" android:layout_width="match_parent"
+        android:layout_height="52dp" android:text="▶ Iniciar Servidor"
+        android:layout_marginBottom="8dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnStopServer" android:layout_width="match_parent"
+        android:layout_height="52dp" android:text="⏹ Detener Servidor"
+        android:enabled="false"
+        style="@style/Widget.Material3.Button.OutlinedButton"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:layout_marginTop="12dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+            android:orientation="vertical" android:padding="12dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="📋 Log de peticiones" android:textStyle="bold"
+                android:layout_marginBottom="4dp"/>
+            <ScrollView android:layout_width="match_parent" android:layout_height="0dp"
+                android:layout_weight="1">
+                <TextView android:id="@+id/tvLog" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:fontFamily="monospace"
+                    android:textSize="11sp" android:text="Sin actividad aún..."/>
+            </ScrollView>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

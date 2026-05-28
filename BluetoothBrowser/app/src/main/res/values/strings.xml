@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BT Browser IPN</string>
+    <string name="role_server">Dispositivo A — Servidor</string>
+    <string name="role_client">Dispositivo B — Cliente</string>
+    <string name="go">IR</string>
+    <string name="url_hint">Ingresar URL o búsqueda...</string>
+</resources>

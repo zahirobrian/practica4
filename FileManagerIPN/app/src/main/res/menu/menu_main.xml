@@ -2,30 +2,30 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/action_theme"
-        android:title="Tema"
-        android:icon="@drawable/ic_palette"
-        app:showAsAction="ifRoom">
+    <item android:id="@+id/action_theme" android:title="Tema"
+        android:icon="@drawable/ic_palette" app:showAsAction="ifRoom">
         <menu>
-            <item android:id="@+id/action_theme_guinda"
-                android:title="@string/theme_guinda" />
-            <item android:id="@+id/action_theme_azul"
-                android:title="@string/theme_azul" />
+            <item android:id="@+id/action_theme_guinda" android:title="@string/theme_guinda" />
+            <item android:id="@+id/action_theme_azul" android:title="@string/theme_azul" />
         </menu>
     </item>
 
-    <item
-        android:id="@+id/action_storage"
-        android:title="Almacenamiento"
-        android:icon="@drawable/ic_storage"
-        app:showAsAction="ifRoom">
+    <item android:id="@+id/action_storage" android:title="Almacenamiento"
+        android:icon="@drawable/ic_storage" app:showAsAction="ifRoom">
         <menu>
-            <item android:id="@+id/action_internal"
-                android:title="@string/internal_storage" />
-            <item android:id="@+id/action_external"
-                android:title="@string/external_storage" />
+            <item android:id="@+id/action_internal" android:title="@string/internal_storage" />
+            <item android:id="@+id/action_external" android:title="@string/external_storage" />
         </menu>
     </item>
+
+    <!-- Ejercicio 1: Sensores -->
+    <item android:id="@+id/action_sensors" android:title="Sensores"
+        android:icon="@android:drawable/ic_menu_compass"
+        app:showAsAction="ifRoom" />
+
+    <!-- Ejercicio 2: Bluetooth -->
+    <item android:id="@+id/action_bluetooth" android:title="Bluetooth"
+        android:icon="@android:drawable/stat_sys_data_bluetooth"
+        app:showAsAction="ifRoom" />
 
 </menu>

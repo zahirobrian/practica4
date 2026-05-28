@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:gravity="center"
+    android:padding="32dp" android:background="?attr/colorSurface">
+
+    <ImageView android:layout_width="80dp" android:layout_height="80dp"
+        android:src="@android:drawable/stat_sys_data_bluetooth"
+        android:tint="?attr/colorPrimary" android:layout_marginBottom="16dp"/>
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="BT Browser IPN" android:textSize="26sp" android:textStyle="bold"
+        android:textColor="?attr/colorPrimary" android:layout_marginBottom="8dp"/>
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Selecciona el rol de este dispositivo"
+        android:textSize="14sp" android:layout_marginBottom="40dp"
+        android:gravity="center"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnServer" android:layout_width="280dp" android:layout_height="64dp"
+        android:text="📡 Dispositivo A — SERVIDOR\nTiene acceso a Internet"
+        android:layout_marginBottom="16dp" android:textSize="13sp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnClient" android:layout_width="280dp" android:layout_height="64dp"
+        android:text="📱 Dispositivo B — CLIENTE\nNavega a través del servidor"
+        style="@style/Widget.Material3.Button.TonalButton" android:textSize="13sp"/>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:gravity="center" android:layout_marginTop="32dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Tema: " android:textSize="13sp"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnThemeGuinda" android:layout_width="wrap_content"
+            android:layout_height="36dp" android:text="Guinda"
+            android:backgroundTint="#731D3F" android:textColor="#FFFFFF"
+            android:layout_marginStart="8dp" style="@style/Widget.Material3.Button.TonalButton"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnThemeAzul" android:layout_width="wrap_content"
+            android:layout_height="36dp" android:text="Azul"
+            android:backgroundTint="#003B8E" android:textColor="#FFFFFF"
+            android:layout_marginStart="8dp" style="@style/Widget.Material3.Button.TonalButton"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnThemeDark" android:layout_width="wrap_content"
+            android:layout_height="36dp" android:text="Oscuro"
+            android:layout_marginStart="8dp" style="@style/Widget.Material3.Button.TonalButton"/>
+    </LinearLayout>
+</LinearLayout>

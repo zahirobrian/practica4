@@ -1,0 +1,9 @@
+<resources>
+    <style name="Theme.BTBrowser" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/guinda</item>
+        <item name="colorPrimaryVariant">@color/guinda_dark</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">@color/azul</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+    </style>
+</resources>

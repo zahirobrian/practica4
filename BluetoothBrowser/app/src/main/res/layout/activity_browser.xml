@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Barra de conexión BT -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="40dp"
+        android:orientation="horizontal" android:gravity="center_vertical"
+        android:paddingHorizontal="12dp" android:background="?attr/colorPrimary">
+        <TextView android:id="@+id/tvBtIndicator" android:layout_width="0dp"
+            android:layout_height="wrap_content" android:layout_weight="1"
+            android:text="● Desconectado" android:textColor="#FFCDD2" android:textSize="12sp"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnConnect" android:layout_width="wrap_content"
+            android:layout_height="32dp" android:text="Conectar"
+            android:textSize="11sp" android:textColor="#FFFFFF"
+            style="@style/Widget.Material3.Button.OutlinedButton"/>
+    </LinearLayout>
+
+    <!-- Barra de navegación -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:gravity="center_vertical"
+        android:padding="8dp" android:background="?attr/colorSurface"
+        android:elevation="4dp">
+        <ImageButton android:id="@+id/btnBack"
+            android:layout_width="40dp" android:layout_height="40dp"
+            android:src="@android:drawable/ic_media_previous"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+        <ImageButton android:id="@+id/btnForward"
+            android:layout_width="40dp" android:layout_height="40dp"
+            android:src="@android:drawable/ic_media_next"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+        <ImageButton android:id="@+id/btnRefresh"
+            android:layout_width="40dp" android:layout_height="40dp"
+            android:src="@android:drawable/ic_menu_rotate"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+        <EditText android:id="@+id/etUrl" android:layout_width="0dp"
+            android:layout_height="40dp" android:layout_weight="1"
+            android:hint="@string/url_hint" android:inputType="textUri"
+            android:singleLine="true" android:paddingHorizontal="8dp"
+            android:background="@drawable/bg_url_bar" android:imeOptions="actionGo"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGo" android:layout_width="52dp"
+            android:layout_height="40dp" android:text="@string/go"
+            android:layout_marginStart="4dp"/>
+    </LinearLayout>
+
+    <!-- Progreso -->
+    <ProgressBar android:id="@+id/progressLoad"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent" android:layout_height="4dp"
+        android:visibility="gone"/>
+
+    <!-- Contenido web renderizado -->
+    <ScrollView android:id="@+id/scrollContent"
+        android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="12dp">
+            <TextView android:id="@+id/tvPageTitle" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:textSize="18sp"
+                android:textStyle="bold" android:layout_marginBottom="8dp"/>
+            <TextView android:id="@+id/tvPageContent" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:textSize="14sp"
+                android:lineSpacingMultiplier="1.4"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Barra de estado -->
+    <TextView android:id="@+id/tvStatus" android:layout_width="match_parent"
+        android:layout_height="24dp" android:gravity="center_vertical"
+        android:paddingHorizontal="8dp" android:textSize="11sp"
+        android:background="?attr/colorSurfaceVariant"
+        android:text="Listo"/>
+</LinearLayout>

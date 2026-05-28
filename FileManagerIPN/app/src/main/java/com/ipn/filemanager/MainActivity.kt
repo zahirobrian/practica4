@@ -155,6 +155,14 @@ class MainActivity : AppCompatActivity() {
                 navigateToFiles()
                 true
             }
+            R.id.action_sensors -> {
+                startActivity(Intent(this, com.ipn.filemanager.sensors.SensorsActivity::class.java))
+                true
+            }
+            R.id.action_bluetooth -> {
+                startActivity(Intent(this, com.ipn.filemanager.bluetooth.BluetoothActivity::class.java))
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
