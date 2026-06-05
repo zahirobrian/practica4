@@ -17,11 +17,12 @@
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:orientation="vertical" android:padding="12dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Estado de conexión" android:textStyle="bold" android:textSize="14sp"/>
+                    android:text="Estado de conexión" android:textStyle="bold"
+                    android:textSize="14sp" android:textColor="#731D3F"/>
                 <TextView android:id="@+id/tvStatus" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:text="Listo"
                     android:textSize="13sp" android:layout_marginTop="4dp"
-                    android:textColor="?attr/colorPrimary"/>
+                    android:textColor="#731D3F"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -32,7 +33,8 @@
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:orientation="vertical" android:padding="12dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="📡 Dispositivos cercanos" android:textStyle="bold" android:textSize="16sp"/>
+                    android:text="📡 Dispositivos cercanos" android:textStyle="bold"
+                    android:textSize="16sp" android:textColor="#333333"/>
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnScan" android:layout_width="match_parent"
                     android:layout_height="48dp" android:text="🔍 Buscar Dispositivos"
@@ -50,15 +52,17 @@
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:orientation="vertical" android:padding="12dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="📁 Archivo a enviar" android:textStyle="bold" android:textSize="16sp"/>
+                    android:text="📁 Archivo a enviar" android:textStyle="bold"
+                    android:textSize="16sp" android:textColor="#333333"/>
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnPickFile" android:layout_width="match_parent"
                     android:layout_height="48dp" android:text="Seleccionar Archivo"
-                    android:layout_marginTop="8dp" style="@style/Widget.Material3.Button.OutlinedButton"/>
+                    android:layout_marginTop="8dp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
                 <TextView android:id="@+id/tvSelectedFile" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:text="Ningún archivo seleccionado"
                     android:textSize="12sp" android:layout_marginTop="4dp"
-                    android:textColor="?attr/colorOnSurfaceVariant"/>
+                    android:textColor="#666666"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -69,33 +73,38 @@
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:orientation="vertical" android:padding="12dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Progreso de transferencia" android:textStyle="bold" android:textSize="14sp"/>
-                <ProgressBar android:id="@+id/progressBar" style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:text="Progreso de transferencia" android:textStyle="bold"
+                    android:textSize="14sp" android:textColor="#333333"/>
+                <ProgressBar android:id="@+id/progressBar"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:max="100" android:progress="0" android:layout_marginTop="8dp"/>
                 <TextView android:id="@+id/tvProgress" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:text="0%"
-                    android:gravity="center" android:layout_marginTop="4dp"/>
+                    android:gravity="center" android:layout_marginTop="4dp"
+                    android:textColor="#333333"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Botones de acción -->
+        <!-- Botones -->
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
             android:orientation="horizontal" android:layout_marginBottom="12dp">
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSend" android:layout_width="0dp" android:layout_height="48dp"
-                android:layout_weight="1" android:text="📤 Enviar" android:layout_marginEnd="4dp"/>
+                android:layout_weight="1" android:text="📤 Enviar"
+                android:layout_marginEnd="4dp"/>
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnReceive" android:layout_width="0dp" android:layout_height="48dp"
-                android:layout_weight="1" android:text="📥 Recibir" android:layout_marginStart="4dp"
-                style="@style/Widget.Material3.Button.TonalButton"/>
+                android:layout_weight="1" android:text="📥 Recibir"
+                android:layout_marginStart="4dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCancel" android:layout_width="match_parent"
             android:layout_height="48dp" android:text="❌ Cancelar Transferencia"
             android:layout_marginBottom="12dp"
-            style="@style/Widget.Material3.Button.OutlinedButton"/>
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
         <!-- Historial -->
         <com.google.android.material.card.MaterialCardView
@@ -104,10 +113,12 @@
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:orientation="vertical" android:padding="12dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="📋 Historial de Transferencias" android:textStyle="bold" android:textSize="16sp"/>
+                    android:text="📋 Historial de Transferencias" android:textStyle="bold"
+                    android:textSize="16sp" android:textColor="#333333"/>
                 <TextView android:id="@+id/tvHistory" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:text="Sin transferencias aún"
                     android:textSize="12sp" android:fontFamily="monospace"
+                    android:textColor="#333333"
                     android:background="#F5F5F5" android:padding="8dp"
                     android:layout_marginTop="8dp"/>
             </LinearLayout>

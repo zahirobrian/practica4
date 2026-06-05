@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?attr/colorSurface">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,31 +15,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            app:cardElevation="4dp"
-            xmlns:app="http://schemas.android.com/apk/res-auto">
+            app:cardElevation="4dp">
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:orientation="vertical" android:padding="16dp">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:orientation="horizontal" android:gravity="center_vertical">
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
                         android:layout_weight="1" android:text="📱 Acelerómetro"
-                        android:textSize="16sp" android:textStyle="bold"/>
+                        android:textSize="16sp" android:textStyle="bold"
+                        android:textColor="#731D3F"/>
                     <Switch android:id="@+id/switchAccel" android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:checked="true"/>
                 </LinearLayout>
                 <TextView android:id="@+id/tvAccelStatus" android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:text="Verificando..." android:textSize="12sp"
-                    android:textColor="?attr/colorOnSurfaceVariant" android:layout_marginTop="4dp"/>
+                    android:layout_height="wrap_content" android:text="Verificando..."
+                    android:textSize="12sp" android:textColor="#666666"
+                    android:layout_marginTop="4dp"/>
                 <TextView android:id="@+id/tvAccelData"
                     android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:text="X: 0.00 m/s²\nY: 0.00 m/s²\nZ: 0.00 m/s²"
                     android:fontFamily="monospace" android:textSize="14sp"
                     android:background="#F5F5F5" android:padding="8dp"
+                    android:textColor="#000000"
                     android:layout_marginTop="8dp"/>
                 <TextView android:id="@+id/tvShakeStatus"
                     android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:text="Agita el teléfono para refrescar archivos"
-                    android:textSize="12sp" android:textColor="?attr/colorPrimary"
+                    android:textSize="12sp" android:textColor="#731D3F"
                     android:layout_marginTop="8dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -49,26 +51,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            app:cardElevation="4dp"
-            xmlns:app="http://schemas.android.com/apk/res-auto">
+            app:cardElevation="4dp">
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:orientation="vertical" android:padding="16dp">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:orientation="horizontal" android:gravity="center_vertical">
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
                         android:layout_weight="1" android:text="💡 Sensor de Luz Ambiental"
-                        android:textSize="16sp" android:textStyle="bold"/>
+                        android:textSize="16sp" android:textStyle="bold"
+                        android:textColor="#731D3F"/>
                     <Switch android:id="@+id/switchLight" android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:checked="true"/>
                 </LinearLayout>
                 <TextView android:id="@+id/tvLightStatus" android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:text="Verificando..." android:textSize="12sp"
-                    android:textColor="?attr/colorOnSurfaceVariant" android:layout_marginTop="4dp"/>
+                    android:layout_height="wrap_content" android:text="Verificando..."
+                    android:textSize="12sp" android:textColor="#666666"
+                    android:layout_marginTop="4dp"/>
                 <TextView android:id="@+id/tvLightData"
                     android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:text="Esperando datos..."
                     android:fontFamily="monospace" android:textSize="14sp"
                     android:background="#F5F5F5" android:padding="8dp"
+                    android:textColor="#000000"
                     android:layout_marginTop="8dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -78,18 +82,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            app:cardElevation="4dp"
-            xmlns:app="http://schemas.android.com/apk/res-auto">
+            app:cardElevation="4dp">
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:orientation="vertical" android:padding="16dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="🔒 Autenticación Biométrica" android:textSize="16sp" android:textStyle="bold"/>
+                    android:text="🔒 Autenticación Biométrica"
+                    android:textSize="16sp" android:textStyle="bold"
+                    android:textColor="#731D3F"/>
                 <TextView android:id="@+id/tvBioStatus" android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:text="Verificando..." android:textSize="12sp"
-                    android:textColor="?attr/colorOnSurfaceVariant" android:layout_marginTop="4dp"/>
+                    android:layout_height="wrap_content" android:text="Verificando..."
+                    android:textSize="12sp" android:textColor="#666666"
+                    android:layout_marginTop="4dp"/>
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:text="Accede a carpetas protegidas usando tu huella dactilar"
-                    android:textSize="13sp" android:layout_marginTop="8dp"/>
+                    android:textSize="13sp" android:textColor="#333333"
+                    android:layout_marginTop="8dp"/>
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnBiometric"
                     android:layout_width="match_parent" android:layout_height="48dp"
@@ -98,7 +105,8 @@
                 <TextView android:id="@+id/tvBioResult"
                     android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:text="" android:textSize="14sp" android:gravity="center"
-                    android:padding="8dp" android:layout_marginTop="8dp"/>
+                    android:padding="8dp" android:layout_marginTop="8dp"
+                    android:textColor="#333333"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
