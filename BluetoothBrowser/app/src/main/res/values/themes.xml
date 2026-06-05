@@ -5,5 +5,9 @@
         <item name="colorOnPrimary">#FFFFFF</item>
         <item name="colorSecondary">@color/azul</item>
         <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="colorSurfaceVariant">#F5F5F5</item>
+        <item name="colorOnSurface">#000000</item>
+        <item name="colorOnSurfaceVariant">#333333</item>
     </style>
 </resources>

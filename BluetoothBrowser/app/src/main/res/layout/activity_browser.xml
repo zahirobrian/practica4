@@ -14,7 +14,7 @@
             android:id="@+id/btnConnect" android:layout_width="wrap_content"
             android:layout_height="32dp" android:text="Conectar"
             android:textSize="11sp" android:textColor="#FFFFFF"
-            style="@style/Widget.Material3.Button.OutlinedButton"/>
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
     </LinearLayout>
 
     <!-- Barra de navegación -->

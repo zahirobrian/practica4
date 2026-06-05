@@ -3,5 +3,9 @@
         <item name="colorPrimary">@color/guinda</item>
         <item name="colorPrimaryVariant">@color/guinda_dark</item>
         <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSurface">#121212</item>
+        <item name="colorSurfaceVariant">#2C2C2C</item>
+        <item name="colorOnSurface">#FFFFFF</item>
+        <item name="colorOnSurfaceVariant">#CCCCCC</item>
     </style>
 </resources>
