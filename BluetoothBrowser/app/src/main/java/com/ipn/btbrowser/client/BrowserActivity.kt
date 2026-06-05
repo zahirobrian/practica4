@@ -254,10 +254,10 @@ class BrowserActivity : AppCompatActivity() {
 
         // Eliminar tags HTML básicos para texto plano
         val text = html
-            .replace(Regex("<script[\s\S]*?</script>", RegexOption.IGNORE_CASE), "")
-            .replace(Regex("<style[\s\S]*?</style>", RegexOption.IGNORE_CASE), "")
-            .replace(Regex("<[^>]+>"), " ")
-            .replace(Regex("\s+"), " ")
+            .replace(Regex("<script[\\s\\S]*?</script>", RegexOption.IGNORE_CASE), "")
+            .replace(Regex("<style[\\s\\S]*?</style>", RegexOption.IGNORE_CASE), "")
+            .replace(Regex("<[^>]+"+ ">"), " ")
+            .replace(Regex("\\s+"), " ")
             .trim()
             .take(5000) // limitar para rendimiento
 
