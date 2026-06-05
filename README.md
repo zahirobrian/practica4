@@ -509,14 +509,23 @@ override fun onPause() {
 5. Desactiva un sensor con el Switch → deja de actualizarse
 6. Toca **🔐 Autenticar con Huella** → usa tu huella dactilar
 
-### Capturas necesarias (Ejercicio 1)
+### Capturas (Ejercicio 1)
 
-| # | Pantalla |
-|---|---|
-| 1 | Pantalla de sensores con datos en tiempo real (valores X/Y/Z del acelerómetro) |
-| 2 | Mensaje de "Shake detectado" tras agitar el teléfono |
-| 3 | Diálogo de autenticación biométrica (huella dactilar) |
-| 4 | Resultado: "✅ Autenticación exitosa" |
+#### Sensores activos — Acelerómetro y Luz Ambiental en tiempo real
+Valores X/Y/Z del acelerómetro actualizándose en vivo, nivel de lux clasificado como "Oscuridad" y sección de autenticación biométrica disponible.
+
+<p align="center">
+  <img src="FileManagerIPN/screenshots/sensores_acelerometro.png" width="280" alt="Sensores en tiempo real"/>
+</p>
+
+---
+
+#### Autenticación biométrica exitosa
+Tras autenticar con huella dactilar, la app muestra "✅ Autenticación exitosa — Acceso concedido a carpeta protegida". Los valores del acelerómetro continúan actualizándose en background.
+
+<p align="center">
+  <img src="FileManagerIPN/screenshots/sensores_biometria_ok.png" width="280" alt="Autenticación biométrica exitosa"/>
+</p>
 
 ---
 
@@ -566,14 +575,14 @@ ConnectedThread (servidor)     ConnectedThread (cliente)
 5. Toca **📤 Enviar** → observa la barra de progreso en ambos dispositivos
 6. El archivo se guarda en `Downloads/` del Teléfono A
 
-### Capturas necesarias (Ejercicio 2)
+### Capturas (Ejercicio 2)
 
-| # | Pantalla |
-|---|---|
-| 1 | Teléfono B buscando dispositivos (lista de dispositivos encontrados) |
-| 2 | Progreso de transferencia en tiempo real (~50%) en ambos teléfonos |
-| 3 | Historial de transferencias mostrando archivo enviado/recibido |
-| 4 | Notificación del servicio Bluetooth en la barra de notificaciones |
+#### Búsqueda de dispositivos Bluetooth
+El Dispositivo B busca dispositivos cercanos. Muestra "Buscando dispositivos Bluetooth...", la sección de archivo a enviar y la barra de progreso de transferencia en 0%.
+
+<p align="center">
+  <img src="FileManagerIPN/screenshots/bt_buscando.png" width="280" alt="Búsqueda de dispositivos Bluetooth"/>
+</p>
 
 ---
 
@@ -648,16 +657,32 @@ El modo oscuro automático usa `res/values-night/themes.xml` del sistema Android
 5. Escribe `google.com` en la barra de URL → toca **IR**
 6. El contenido de la página llega via Bluetooth y se renderiza como texto
 
-### Capturas necesarias (Ejercicio 3)
+### Capturas (Ejercicio 3)
 
-| # | Pantalla | Dispositivo |
-|---|---|---|
-| 1 | Pantalla de selección de rol (Servidor / Cliente) | Cualquiera |
-| 2 | Servidor activo con log de peticiones | Teléfono A |
-| 3 | Cliente con indicador "● Conectado" en verde | Teléfono B |
-| 4 | Teléfono B con WiFi y datos **desactivados** (barra superior) | Teléfono B |
-| 5 | Contenido de una página web renderizado via Bluetooth | Teléfono B |
-| 6 | Pantalla de selección de temas (Guinda/Azul/Oscuro) | Cualquiera |
+#### Pantalla de selección de rol
+El usuario elige si su dispositivo actúa como Servidor (A — tiene Internet) o Cliente (B — sin Internet). Incluye selector de tema de color.
+
+<p align="center">
+  <img src="BluetoothBrowser/docs/screenshots/01_pantalla_roles.png" width="280" alt="Selección de rol"/>
+</p>
+
+#### Servidor esperando / Servidor conectado
+
+<p align="center">
+  <img src="BluetoothBrowser/docs/screenshots/02_servidor_esperando.png" width="280" alt="Servidor esperando"/>
+  &nbsp;&nbsp;
+  <img src="BluetoothBrowser/docs/screenshots/03_servidor_conectado.png" width="280" alt="Servidor conectado"/>
+</p>
+<p align="center"><i>Izquierda: Servidor iniciado esperando cliente — Derecha: Cliente "A24 de Yessica" conectado con log de peticiones</i></p>
+
+#### Cliente — Selección de servidor y navegación exitosa
+
+<p align="center">
+  <img src="BluetoothBrowser/docs/screenshots/04_cliente_seleccion.png" width="280" alt="Selección de servidor"/>
+  &nbsp;&nbsp;
+  <img src="BluetoothBrowser/docs/screenshots/05_cliente_navegando.png" width="280" alt="Navegación exitosa"/>
+</p>
+<p align="center"><i>Izquierda: Lista de dispositivos pareados para seleccionar el servidor — Derecha: example.com cargado sin Internet propio vía Bluetooth</i></p>
 
 ---
 
